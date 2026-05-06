@@ -1,0 +1,188 @@
+:root {
+  --bg:     #ffffff;
+  --ink:    #1a1612;
+  --red:    #b82a1e;
+  --dim:    #9a9188;
+  --line:   #cdc5b5;
+  --mono:   'IBM Plex Mono', monospace;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; }
+
+body, a, button {
+  cursor: url('https://everest-pipkin.com/projects/cursor/g.gif'), auto;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 1.55;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* page */
+.page {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 20px;
+  opacity: 0;
+  animation: up 0.4s ease forwards;
+}
+@keyframes up {
+  from { opacity:0; transform:translateY(6px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* accents */
+.r   { color: var(--red); }
+.dim { color: var(--dim); }
+
+/* header */
+header {
+  padding: 18px 0 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.header-top {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.big-name {
+  font-family: var(--mono);
+  font-size: clamp(2.4rem, 10vw, 4.2rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.bio-inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 12px;
+  font-size: 10px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.bio-inline .dim { color: var(--dim); }
+
+nav { display: flex; gap: 14px; }
+nav a {
+  font-size: 10px;
+  color: var(--dim);
+  letter-spacing: 0.05em;
+  transition: color 0.12s;
+}
+nav a.on, nav a:hover { color: var(--ink); }
+
+/* row label */
+.row-label {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 0 8px;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border-bottom: 1px solid var(--line);
+}
+
+/* articles */
+article {
+  border-bottom: 1px solid var(--line);
+}
+
+article a {
+  display: grid;
+  grid-template-columns: 22px 1fr 16px;
+  gap: 0 10px;
+  padding: 14px 0;
+  align-items: start;
+  transition: background 0.12s;
+}
+
+article a:hover { background: rgba(0,0,0,0.025); }
+
+/* project number */
+.n {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  padding-top: 2px;
+}
+
+/* info stack */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.tags {
+  font-size: 9px;
+  color: var(--dim);
+  letter-spacing: 0.04em;
+}
+
+.desc {
+  font-size: 10px;
+  color: var(--dim);
+  line-height: 1.7;
+  margin-top: 2px;
+}
+
+/* arrow */
+.arr {
+  font-size: 11px;
+  color: var(--line);
+  padding-top: 1px;
+  transition: color 0.12s, transform 0.12s;
+  display: inline-block;
+}
+article a:hover .arr {
+  color: var(--red);
+  transform: translate(2px,-2px);
+}
+
+/* on hover, tags blush red */
+article a:hover .tags { color: var(--red); opacity: 0.6; }
+
+/* footer */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0 28px;
+  font-size: 9.5px;
+}
+
+footer div { display: flex; gap: 12px; }
+
+footer a {
+  color: var(--dim);
+  letter-spacing: 0.05em;
+  transition: color 0.12s;
+}
+footer a:hover { color: var(--ink); }
+
+/* mobile */
+@media (max-width: 400px) {
+  article a { grid-template-columns: 18px 1fr 14px; }
+  footer { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
